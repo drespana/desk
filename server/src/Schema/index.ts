@@ -1,7 +1,8 @@
-const { itemDef } = require('./Item.schema');
+// const { itemDefs } = require('./Item.schema');
 
-const typeDefs = `
-    itemDef
-`
+// const typeDefs = {
+//     itemDefs
+// }
+   
 
-export default typeDefs;
+// export default typeDefs;

@@ -1,7 +1,7 @@
-const { itemRes } = require('./ItemQuery');
+// const { itemRes } = require('./ItemQuery');
 
-const resolvers = {
-    itemRes
-};
+// const resolvers = {
+//     itemRes
+// };
 
-export default resolvers;
+// export default resolvers;
