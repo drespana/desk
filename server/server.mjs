@@ -6,15 +6,29 @@ import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import { gql } from 'graphql-tag';
+import fs from 'fs';
+import path from 'path';
 
-const { typeDefs } = ['./src/Schema/Item.schema.graphql'];
-const { resolvers } = ['./src/Resolver/ItemQuery.graphql'];
 const app = express();
 const httpServer = http.createServer(app);
 
+const __dirname = await import.meta.url;
+const schema = fs.readdirSync(path.join(__dirname, '..', 'src', 'Schema'));
+const typeDefs = schema.map(file => {
+    const filePath = path.join(__dirname, '..', 'src', 'Schema', file);
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    return gql`${fileContent}`;
+});
+const resolve = fs.readdirSync(path.join(__dirname, '..', 'src', 'Resolver'));
+const resolvers = resolve.map((file) => {
+    const filePath = path.join(__dirname, '..', 'src', 'Resolver', file);
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    return gql`${fileContent}`;
+})
 const server = new ApolloServer({
-    typeDefs,
-    resolvers,
+    typeDefs: typeDefs,
+    resolvers: resolvers,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
 });
 await server.start();
