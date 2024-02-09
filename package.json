@@ -1,5 +1,6 @@
 {
   "name": "desk",
+  "type": "module",
   "version": "1.0.0",
   "description": "## apollo-docs A standalone web server.",
   "main": "index.js",
