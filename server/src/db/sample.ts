@@ -1,4 +1,4 @@
-let items = [
+export const items = [
     {
         itemName: 'Soda',
         inStock: 0,

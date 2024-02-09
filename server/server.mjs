@@ -7,28 +7,44 @@ import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { gql } from 'graphql-tag';
-import fs from 'fs';
-import path from 'path';
+// import fs from 'fs';
+// import path from 'path';
 
 const app = express();
 const httpServer = http.createServer(app);
 
-const __dirname = await import.meta.url;
-const schema = fs.readdirSync(path.join(__dirname, '..', 'src', 'Schema'));
-const typeDefs = schema.map(file => {
-    const filePath = path.join(__dirname, '..', 'src', 'Schema', file);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    return gql`${fileContent}`;
-});
-const resolve = fs.readdirSync(path.join(__dirname, '..', 'src', 'Resolver'));
-const resolvers = resolve.map((file) => {
-    const filePath = path.join(__dirname, '..', 'src', 'Resolver', file);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    return gql`${fileContent}`;
-})
+// const __dirname = await import.meta.url;
+// const schema = fs.readdirSync(path.join( '///home/drespana/desk/server', 'src', 'Schema'));
+// schema.forEach(file => {console.log(file)});
+// const typeDefs = schema.map(file => {
+//     const filePath = path.join('///home/drespana/desk/server', 'src',  'Schema', file);
+//     const fileContent = fs.readFileSync(filePath, 'utf8');
+//     return gql`${fileContent}`;
+// });
+// const resolverDirectory = fs.readdirSync(path.join('///home/drespana/desk/server', 'src',  'Resolver'));
+// const resolvers = resolverDirectory.map((file) => {
+//     const filePath = path.join('///home/drespana/desk/server', 'src',  'Resolver', file);
+//     const fileContent = fs.readFileSync(filePath, 'utf8');
+//     return fileContent;
+// })
+
+//schema
+const typeDefs = gql`
+    type Query {
+        hello: String
+    }
+`
+
+// a map of functions that return data for the schema
+const resolvers = {
+    Query: {
+        hello: () => 'world'
+    }
+};
+
 const server = new ApolloServer({
-    typeDefs: typeDefs,
-    resolvers: resolvers,
+    typeDefs,
+    resolvers,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
 });
 await server.start();
