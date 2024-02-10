@@ -6,39 +6,17 @@ import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { gql } from 'graphql-tag';
-// import fs from 'fs';
-// import path from 'path';
+import typeDefs from 'src/schema/index.schema';
+// import resolvers from 'src/resolvers/index.resolver';
+// import items from 'src/db/sample';
 
 const app = express();
 const httpServer = http.createServer(app);
 
-// const __dirname = await import.meta.url;
-// const schema = fs.readdirSync(path.join( '///home/drespana/desk/server', 'src', 'Schema'));
-// schema.forEach(file => {console.log(file)});
-// const typeDefs = schema.map(file => {
-//     const filePath = path.join('///home/drespana/desk/server', 'src',  'Schema', file);
-//     const fileContent = fs.readFileSync(filePath, 'utf8');
-//     return gql`${fileContent}`;
-// });
-// const resolverDirectory = fs.readdirSync(path.join('///home/drespana/desk/server', 'src',  'Resolver'));
-// const resolvers = resolverDirectory.map((file) => {
-//     const filePath = path.join('///home/drespana/desk/server', 'src',  'Resolver', file);
-//     const fileContent = fs.readFileSync(filePath, 'utf8');
-//     return fileContent;
-// })
-
-//schema
-const typeDefs = gql`
-    type Query {
-        hello: String
-    }
-`
-
 // a map of functions that return data for the schema
 const resolvers = {
     Query: {
-        hello: () => 'world'
+        getItems: () => 'items'
     }
 };
 
