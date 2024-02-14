@@ -5,16 +5,18 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 import express from 'express';
 import http from 'http';
 import cors from 'cors';
+import * as dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import Schema from './src/Schema'
-import Resolvers from './src/Resolver'
+import { connectToDatabase } from '../dist/Connection/connection.js'
 
+dotenv.config();
 const app = express();
 const httpServer = http.createServer(app);
 
+
 const server = new ApolloServer({
-    typeDefs: Schema,
-    resolvers: Resolvers,
+    typeDefs,
+    resolvers,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
 });
 await server.start();
