@@ -1,0 +1,9 @@
+{
+  "presets": [
+    ["@babel/preset-env", { "targets": "node14" }], // Adjust target based on your environment
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties" // Optional for class properties support
+  ]
+}
