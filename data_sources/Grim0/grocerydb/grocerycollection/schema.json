@@ -1,0 +1,25 @@
+{
+    "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "frequency": {
+            "bsonType": "string"
+        },
+        "inStock": {
+            "bsonType": "int"
+        },
+        "item": {
+            "bsonType": "string"
+        },
+        "store": {
+            "bsonType": "string"
+        }
+    },
+    "required": [
+        "_id",
+        "frequency",
+        "item"
+    ],
+    "title": "grocerycollection"
+}
