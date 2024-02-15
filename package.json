@@ -1,0 +1,23 @@
+{
+  "name": "desk",
+  "version": "1.0.0",
+  "description": "## apollo-docs A standalone web server.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "",
+    "compile":"tsc",
+    "serve":"cd client && ng serve",
+    "start":"node index.ts && serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/client": "^3.9.5",
+    "@types/node": "^20.11.19",
+    "dotenv": "^16.4.4",
+    "graphql": "^16.8.1",
+    "realm-web": "^2.0.0",
+    "typescript": "^5.3.3"
+  }
+}
