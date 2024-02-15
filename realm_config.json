@@ -1,7 +1,7 @@
 {
-    "app_id": "desk-efkvv",
+    "app_id": "desk-0-yxtus",
     "config_version": 20210101,
-    "name": "desk",
+    "name": "desk-0",
     "provider_region": "gcp-us-central1",
     "deployment_model": "LOCAL"
 }
