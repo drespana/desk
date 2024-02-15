@@ -4,7 +4,8 @@
   "description": "## apollo-docs A standalone web server.",
   "main": "index.js",
   "scripts": {
-    "start": "npx tsc && node server/server.mjs"
+    "compile":"tsc",
+    "start": "npm run compile && node ./dist/server/server.mjs"
   },
   "keywords": [],
   "author": "",

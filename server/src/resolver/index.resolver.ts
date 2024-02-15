@@ -1,7 +1,7 @@
-// import { itemResolvers } from './item.resolver';
+import { itemResolvers } from './item.resolver';
 
-// const resolvers = {
-    // ...itemResolvers,
-//};
+const resolvers = {
+    ...itemResolvers,
+};
 
-// export default resolvers;
+export default resolvers;
